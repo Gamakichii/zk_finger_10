@@ -1,0 +1,46 @@
+// Top-level plugins block if it exists, or apply plugin: 'com.android.library'
+plugins {
+    id 'com.android.library'
+    // Add other plugins like kotlin-android if used
+}
+
+android {
+    // ***** THIS IS CRUCIAL *****
+    namespace "com.gamakichii.zkfinger10" // Updated namespace
+
+    compileSdkVersion 34 // Or your target compile SDK version
+
+    defaultConfig {
+        minSdkVersion 21 // Or the minimum SDK version the library supports
+        // targetSdkVersion is usually not needed for libraries, compileSdkVersion is used
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            // proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    // Lint options, source sets, etc., can also go here if needed
+    lintOptions {
+        disable 'InvalidPackage' // If you have lint errors related to package
+    }
+
+    // If the library uses Java 8 features
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    // If using Kotlin
+    // kotlinOptions {
+    //     jvmTarget = '1.8'
+    // }
+}
+
+dependencies {
+    implementation 'androidx.core:core-ktx:1.9.0' // Example dependency
+    // Add other dependencies the library needs
+}
